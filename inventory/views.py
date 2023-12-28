@@ -4,6 +4,7 @@ from rest_framework import generics
 from .models import Inventory
 from .serializers import InventorySerializer
 from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 
 
 class InventoryList(generics.ListAPIView) : 
@@ -29,5 +30,8 @@ def inventory_list(request) :
 
 
 def inventory_info(request, id) :
-    item = get_object_or_404(Inventory, id=id)
-    return render(request, 'inventory/info.html', {'item' : item})
+    try : 
+        item = get_object_or_404(Inventory, id=id)
+        return render(request, 'inventory/info.html', {'item' : item})
+    except Http404 :
+        return render(request, 'inventory/404.html')
