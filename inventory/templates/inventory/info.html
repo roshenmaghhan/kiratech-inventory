@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title> {{ item.name }} </title>
-        </head>
-        <body>
-            <h1>{{ item.name }}</h1>
-            <!-- <img> -->
-            <p><b>Description :</b> {{ item.description }}</p>
-            <p><b>Note :</b> {{ item.note }}</p>
-            <p><b>Stock :</b> {{ item.stock }}</p>
-            <p><b>Supplier :</b> {{ item.supplier }}</p>
-        </body>
-    </html>
+{% load static %}
+<html>
+    <head>
+        <title> {{ item.name }} </title>
+        <style>
+            img {
+                width: 500px;
+                height: 500px;
+                border: 1px solid black;
+                display: block;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+
+            h1 {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{ item.name }}</h1>
+        <img src="{% static 'images/' %}{{ item.id }}.jpeg" alt="{{ item.description }}">
+        <table>
+            <tr><th>ID</th><td>{{ item.id }}</td></tr>
+            <tr><th>Description</th><td>{{ item.description }}</td></tr>
+            <tr><th>Note</th><td>{{ item.note }}</td></tr>
+            <tr><th>Stock</th><td>{{ item.stock }}</td></tr>
+            <tr><th>Supplier</th><td>{{ item.supplier }}</td></tr>
+        </table>
+    </body>
+</html>

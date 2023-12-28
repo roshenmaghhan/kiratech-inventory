@@ -1,20 +1,57 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title>List of Inventories</title>
-        </head>
-        <body>
-            <h1>List of Inventories</h1>
-            <ul>
-                {% for inventory in inventories %}
-                <li>
-                    <b>Name:</b>{{ inventory.name }}<br>
-                    <b>Supplier:</b>{{ inventory.supplier }}<br>
-                    <b>Availability:</b>{{ inventory.availability }}<br>
-                </li>
-            </ul>
-            {% empty %}
-            <li>Looks like there's nothing in your inventory.</li>
-            {% endfor %}
-        </body>
-    </html>
+<html>
+<head>
+    <title>List of Inventories</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        h1, div {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; padding-top: 3vh;">List of Inventories</h1>
+    <div style="text-align: center;">
+        <form action="" method="get" style="display: inline-block; margin-bottom: 20px;">
+            <input type="text" name="name" placeholder="Search by name">
+            <input type="submit" value="Search">
+        </form>
+    </div>    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Supplier</th>
+            <th>Availability</th>
+        </tr>
+        {% for inventory in inventories %}
+        <tr>
+            <td><a href="http://localhost:8000/inventory/{{ inventory.id }}">{{ inventory.name }}</a></td>
+            <td>{{ inventory.supplier_name }}</td>
+            <td>{{ inventory.availability }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="text-align: center;">Looks like there's nothing in your inventory. <br>
+            To populate your inventory, run <i>python manage.py generate_dummy</i>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -20,6 +20,9 @@ class InventoryList(generics.ListAPIView) :
 
 def inventory_list(request) :
     api_url = 'http://localhost:8000/api/inventory'
+    name = request.GET.get('name', '')
+    if name :
+        api_url += f'?name={name}'
     response = requests.get(api_url)
     inventories = response.json() if response.status_code == 200 else []
     return render(request, 'inventory/list.html', {'inventories' : inventories})
