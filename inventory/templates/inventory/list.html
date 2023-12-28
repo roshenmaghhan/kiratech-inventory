@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>List of Inventories</title>
+        </head>
+        <body>
+            <h1>List of Inventories</h1>
+            <ul>
+                {% for inventory in inventories %}
+                <li>
+                    <b>Name:</b>{{ inventory.name }}<br>
+                    <b>Supplier:</b>{{ inventory.supplier }}<br>
+                    <b>Availability:</b>{{ inventory.availability }}<br>
+                </li>
+            </ul>
+            {% empty %}
+            <li>Looks like there's nothing in your inventory.</li>
+            {% endfor %}
+        </body>
+    </html>
