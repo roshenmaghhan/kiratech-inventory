@@ -13,7 +13,7 @@ Step 7 : Once the above steps have been followed, run the following command, to 
 ## Viewing List of Inventories
 To view the list of inventories, you can head to the ```/inventory``` URL extension. This page displays all existing inventories, and allows you to search for an inventory, by filtering the name. This search is case-insensitive. You could also click on each inventory's name, to get a more detailed information about the respective inventory.
 
-# Using The Inventory API
+## Using The Inventory API
 To use the inventory API, you can use the ```/api/inventory``` endpoint to make a GET request, where a "name" parameter is accepted, though optional, to filter through the list of existing inventories.
 
 ## Viewing A Specific Inventory
